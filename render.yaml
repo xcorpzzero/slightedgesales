@@ -1,7 +1,7 @@
 services:
   # Backend service
   - type: web
-    name: my-website-backend
+    name: slightedgesales-backend
     runtime: node
     buildCommand: cd backend && npm install
     startCommand: cd backend && npm start
@@ -12,7 +12,7 @@ services:
 
   # Frontend service  
   - type: web
-    name: my-website-frontend
+    name: slightedgesales
     runtime: static
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/build
