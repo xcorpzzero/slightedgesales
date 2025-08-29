@@ -1,0 +1,25 @@
+services:
+  # Backend service
+  - type: web
+    name: my-website-backend
+    runtime: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  # Frontend service  
+  - type: web
+    name: my-website-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://my-website-backend.onrender.com
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: sameorigin
