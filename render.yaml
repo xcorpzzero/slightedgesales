@@ -12,13 +12,13 @@ services:
 
   # Frontend service  
   - type: web
-    name: slightedgesales
+    name: slightedgesales-frontend
     runtime: static
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/build
     envVars:
       - key: REACT_APP_API_URL
-        value: https://my-website-backend.onrender.com
+        value: https://slightedgesales-frontend.onrender.com
     headers:
       - path: /*
         name: X-Frame-Options
